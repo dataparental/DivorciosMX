@@ -1,0 +1,34 @@
+project:
+  type: book
+
+book:
+  title: "El divorcio en Mexico en datos"
+  subtitle:  "Evidencia estadistica y proteccion a la infancia"
+  author: 
+    - name: "Dr. Fernando Avalos Reyes"
+   
+  date: "15/10/2025"
+  chapters:
+    - index.qmd
+    - 01-intro.qmd
+    - 02-marco-juridico.qmd
+    - 03-metodologia.qmd
+    - 04-tendencias-nacionales.qmd
+    - 05-patria-potestad.qmd
+    - 06-pension-alimenticia.qmd
+    - 08-politicas-publicas.qmd
+    - 09-conclusiones.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

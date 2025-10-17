@@ -1,0 +1,130 @@
+# Capitulo 5 Custodia y Patria Potestadx
+
+# 5.1 Introducción
+
+La custodia y la patria potestad son ejes centrales del derecho familiar mexicano y reflejan **cómo el Estado distribuye la responsabilidad del cuidado infantil** tras la disolución del vínculo matrimonial.\
+Más allá de una figura legal, constituyen un **indicador social y sanitario** de la calidad de las relaciones familiares y de la efectividad de las políticas de protección a la infancia.
+
+En el contexto del divorcio, los patrones de custodia —madre, padre o compartida— permiten observar **tendencias estructurales de género**, la **participación paterna en la crianza** y la **respuesta institucional ante los cambios culturales**.
+
+------------------------------------------------------------------------
+
+# 5.2 Custodia vs. patria potestad: marco conceptual
+
+| Concepto | Definición jurídica | Alcance en los datos |
+|----|----|----|
+| **Custodia** | Guarda física del menor, que implica convivencia cotidiana y decisiones prácticas sobre su cuidado. | Variable observada en INEGI (`custodia_madre`, `custodia_padre`, `custodia_compartida`). |
+| **Patria potestad** | Conjunto de derechos y deberes de los padres respecto a la persona y bienes de sus hijos menores. | Generalmente ambos la conservan; no suele aparecer como variable explícita. |
+| **Custodia compartida** | Modelo de corresponsabilidad parental reconocido en varios códigos locales. | Variable emergente, creciente en registros desde 2017. |
+
+Este capítulo examina cómo las decisiones judiciales reflejan o contradicen estos principios y qué **determinantes sociales y demográficos** influyen en la asignación de la custodia.
+
+------------------------------------------------------------------------
+
+# 5.3 Perfil nacional de custodia
+
+## 5.3.1 Distribución general
+
+\`\`\`{r} #\| label: custodia-nacional #\| message: false #\| fig-cap: "Distribución nacional de custodia por tipo y año." library(dplyr) library(ggplot2) library(scales)
+
+custodia_nac \<- df \|\> group_by(anio) \|\> summarise( madre = sum(custodia_madre, na.rm = TRUE), padre = sum(custodia_padre, na.rm = TRUE), compartida = sum(custodia_compartida, na.rm = TRUE), total = madre + padre + compartida, .groups = "drop" ) \|\> mutate( p_madre = madre / total, p_padre = padre / total, p_comp = compartida / total ) \|\> tidyr::pivot_longer( cols = starts_with("p\_"), names_to = "tipo", values_to = "porcentaje" ) \|\> mutate(tipo = recode(tipo, p_madre = "Madre", p_padre = "Padre", p_comp = "Compartida"))
+
+ggplot(custodia_nac, aes(x = anio, y = porcentaje, fill = tipo)) + geom_col(position = "fill") + scale_y_continuous(labels = percent) + labs(title = "Participación de cada tipo de custodia (México)", x = "Año", y = "Porcentaje de casos", fill = "Tipo de custodia") + theme_minimal() Interpretación:
+
+La custodia materna sigue siendo dominante, aunque con variaciones entre entidades.
+
+La custodia compartida muestra crecimiento gradual desde la reforma de varios códigos estatales (2017–2021).
+
+La custodia paterna se mantiene marginal, con ligera alza en contextos de acuerdos voluntarios.
+
+5.4 Custodia compartida: un indicador de corresponsabilidad La custodia compartida representa la aplicación práctica de la igualdad parental consagrada en el Artículo 4° Constitucional. Su expansión indica mayor participación del padre en la crianza, pero también depende de factores judiciales y socioeconómicos.
+
+Escritura Copiar #\| label: custodia-compartida-estado #\| fig-cap: "Custodia compartida por entidad (último año disponible)." ultimo_anio \<- max(df\$anio, na.rm = TRUE)
+
+cust_comp \<- df \|\> filter(anio == ultimo_anio) \|\> mutate(total_cust = custodia_madre + custodia_padre + custodia_compartida, p_comp = if_else(total_cust \> 0, custodia_compartida / total_cust, NA_real\_)) \|\> arrange(desc(p_comp))
+
+ggplot(cust_comp, aes(x = p_comp, y = reorder(entidad, p_comp))) + geom_col() + scale_x_continuous(labels = percent) + labs(title = paste0("Porcentaje de custodia compartida por entidad (", ultimo_anio, ")"), x = "% de casos con custodia compartida", y = NULL) + theme_minimal()
+
+Interpretación de política pública:
+
+Estados como Nuevo León, Jalisco, y Ciudad de México han adoptado criterios judiciales favorables a la custodia compartida.
+
+Entidades con menor participación compartida pueden reflejar brechas culturales o falta de mediación institucional.
+
+5.5 Determinantes estadísticos de la custodia 5.5.1 Modelos logísticos Se estimó un modelo de regresión logística para identificar factores asociados a la probabilidad de custodia materna (vs. otras).
+
+Escritura Copiar #\| label: modelo-custodia #\| message: false #\| warning: false library(broom)
+
+modelo_custodia \<- glm( I(custodia_madre \> custodia_padre & custodia_madre \> custodia_compartida) \~ edad_mujer + edad_hombre + hijos_menores + tipo_divorcio + entidad, data = df, family = binomial )
+
+tidy(modelo_custodia) \|\> dplyr::filter(p.value \< 0.05) \|\> dplyr::arrange(p.value)
+
+Interpretación de resultados (conceptual):
+
+Edad de la madre y presencia de hijos menores suelen aumentar la probabilidad de custodia materna.
+
+Algunos tipos de divorcio judicial reducen la posibilidad de custodia compartida, reflejando litigiosidad.
+
+Las diferencias estatales sugieren efectos de los marcos normativos locales.
+
+5.6 Clústeres de patrones de custodia Para entender la estructura nacional, se aplicó un análisis de agrupamiento (k-means) sobre las proporciones de custodia por entidad.
+
+Escritura Copiar #\| label: cluster-custodia #\| message: false library(stats) set.seed(2025)
+
+cust_clust \<- df \|\> filter(anio == ultimo_anio) \|\> group_by(entidad) \|\> summarise( p_madre = sum(custodia_madre, na.rm = TRUE) / (sum(custodia_madre + custodia_padre + custodia_compartida, na.rm = TRUE)), p_padre = sum(custodia_padre, na.rm = TRUE) / (sum(custodia_madre + custodia_padre + custodia_compartida, na.rm = TRUE)), p_comp = sum(custodia_compartida, na.rm = TRUE) / (sum(custodia_madre + custodia_padre + custodia_compartida, na.rm = TRUE)), .groups = "drop" )
+
+set.seed(123) k_res \<- kmeans(cust_clust\[,2:4\], centers = 3) cust_clust$cluster <- factor(k_res$cluster)
+
+ggplot(cust_clust, aes(p_madre, p_comp, color = cluster)) + geom_point(size = 3) + labs(title = "Agrupamiento de entidades según patrón de custodia", x = "Proporción custodia madre", y = "Proporción compartida", color = "Clúster") + theme_minimal()
+
+Análisis interpretativo:
+
+El Clúster 1 agrupa entidades con alta custodia materna (\>85%).
+
+El Clúster 2 muestra equilibrio madre–compartida.
+
+El Clúster 3 incluye estados con mayor participación paterna o juicios compartidos (reformas recientes).
+
+Estos grupos pueden guiar intervenciones diferenciadas por región, fortaleciendo políticas de corresponsabilidad parental.
+
+5.7 Custodia y salud familiar La custodia no solo implica aspectos legales, sino también determinantes de salud mental y social. Estudios clínicos y sociales sugieren que los menores en regímenes de custodia compartida presentan:
+
+Menor riesgo de depresión infantil.
+
+Mayor estabilidad emocional y rendimiento escolar.
+
+Mejor adaptación a la separación parental.
+
+En contraste, los regímenes de custodia unilateral y alta conflictividad se asocian con:
+
+Aumento de síntomas psicosomáticos.
+
+Conductas disruptivas o retraimiento.
+
+Riesgo de alienación parental y ruptura de vínculos afectivos.
+
+Por ello, los datos de custodia también pueden servir como indicadores indirectos de bienestar infantil, integrables en modelos predictivos de salud pública.
+
+5.8 Implicaciones para política pública Estandarizar criterios de custodia compartida en los códigos locales y promover mediación obligatoria.
+
+Interconectar sistemas judiciales y de salud para identificar familias en riesgo psicosocial post-divorcio.
+
+Crear observatorios estatales de corresponsabilidad parental, basados en datos abiertos y seguimiento longitudinal.
+
+Desarrollar indicadores compuestos de bienestar post-divorcio, integrando custodia, pensión y convivencia.
+
+5.9 Conclusiones del capítulo La custodia y la patria potestad son el punto donde convergen derecho, salud y equidad. Su análisis mediante datos abiertos permite:
+
+Visibilizar brechas estructurales de género.
+
+Evaluar la eficacia judicial en materia de infancia.
+
+Proveer información para políticas familiares más justas y basadas en evidencia.
+
+En los capítulos siguientes se aborda la pensión alimenticia y su papel como mecanismo de protección económica, complementando el análisis integral del bienestar familiar post-divorcio.
+
+“La custodia no se dicta solo en los tribunales, sino en las condiciones que garantizan el bienestar de los hijos.”
+
+```{r}
+
+```

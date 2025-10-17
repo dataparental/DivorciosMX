@@ -1,0 +1,126 @@
+# Capítulo 2. Marco jurídico del divorcio en México
+
+2.1 Contexto normativo general
+
+El divorcio en México se rige por un entramado jurídico que combina **principios constitucionales**, **legislación civil**, y **tratados internacionales** sobre derechos humanos y protección a la infancia.\
+Este marco define las reglas para la **disolución del vínculo matrimonial**, la **tutela de los derechos de los hijos** y las **obligaciones económicas derivadas de la separación**.
+
+A partir de la **reforma de 2008**, que introdujo el **divorcio incausado**, el Estado mexicano adoptó un modelo que reconoce la **autonomía de las personas** para terminar un matrimonio sin necesidad de acreditar culpa o causa específica.\
+Sin embargo, esta simplificación procesal generó nuevos retos: garantizar la **protección efectiva del interés superior del menor** y asegurar la **continuidad en las obligaciones alimentarias y de cuidado**.
+
+------------------------------------------------------------------------
+
+# 2.2 Fundamentos constitucionales
+
+La **Constitución Política de los Estados Unidos Mexicanos** establece los principios rectores que orientan la materia familiar:
+
+| Artículo | Contenido relevante | Implicación en política pública |
+|-----------------|---------------------|----------------------------------|
+| **Art. 1°** | Reconoce los derechos humanos y la obligación del Estado de promover, respetar, proteger y garantizar su ejercicio. | El divorcio debe resolverse con respeto a los derechos de los menores, sin discriminación por género o condición económica. |
+| **Art. 4°** | Protege la igualdad entre hombres y mujeres, el derecho a decidir sobre el número y espaciamiento de los hijos, y el interés superior de la niñez. | Fundamenta políticas de **corresponsabilidad parental** y custodia compartida. |
+| **Art. 16°** | Derecho a la privacidad e inviolabilidad de la familia. | Regula el manejo de información personal en expedientes judiciales y bases de datos. |
+| **Art. 123°** | Derecho al trabajo y protección de la familia. | Permite vincular el incumplimiento de pensión alimenticia con sanciones laborales o fiscales. |
+
+------------------------------------------------------------------------
+
+# 2.3 Marco legal secundario: Código Civil Federal y códigos locales
+
+Aunque el **Código Civil Federal (CCF)** contiene las bases del derecho familiar, cada **entidad federativa** posee su propio **código civil o familiar**, lo que genera **heterogeneidad normativa** en los procedimientos y criterios.
+
+## 2.3.1 Tipos de divorcio
+
+El artículo 266 del CCF y sus equivalentes estatales reconocen: - **Divorcio voluntario o administrativo**, cuando ambos cónyuges están de acuerdo y no hay hijos menores.\
+- **Divorcio incausado o unilateral**, cuando basta la voluntad de una de las partes.\
+- **Divorcio judicial o necesario**, basado en causas específicas (abandono, violencia, adulterio, etc.).
+
+Esta diversidad de modalidades se refleja en los **registros administrativos del INEGI**, lo que permite construir variables como:
+
+\`\`\`r tipo_divorcio \<- c("Administrativo", "Judicial", "Incausado", "Voluntario")
+
+##  2.3.2 Custodia y patria potestad
+
+El CCF, artículos 416–423, establece que la patria potestad corresponde a ambos padres y sólo puede limitarse por resolución judicial fundada en el interés superior del menor. Los códigos locales regulan la custodia física y los regímenes de convivencia, aspectos que en los datos del INEGI aparecen como variables categóricas:
+
+custodia_madre
+
+custodia_padre
+
+custodia_compartida
+
+Estas categorías permiten analizar la aplicación práctica del principio de igualdad parental frente a los datos empíricos.
+
+## 2.3.3 Pensión alimenticia 
+
+El derecho a recibir alimentos está protegido por el artículo 301 del CCF, que lo considera irrenunciable y proporcional a la capacidad económica del deudor. El incumplimiento se sanciona civil y penalmente, conforme al Código Penal Federal, artículo 337.
+
+En términos de datos:
+
+pension_si indica cumplimiento judicial o acuerdo.
+
+pension_no o no_registro evidencia vacíos o incumplimientos.
+
+# 2.4 Normas internacionales aplicables 
+
+México es parte de diversos tratados internacionales que amplían la protección de la infancia y la equidad en materia familiar:
+
+Instrumento Año Relevancia Convención sobre los Derechos del Niño (ONU) 1989 Introduce el principio del interés superior del niño como criterio rector. Convención sobre la Eliminación de Todas las Formas de Discriminación contra la Mujer (CEDAW) 1979 Promueve la igualdad de derechos y responsabilidades parentales. Pacto Internacional de Derechos Económicos, Sociales y Culturales (PIDESC) 1966 Reconoce el derecho a la protección y asistencia familiar. Convención Americana sobre Derechos Humanos (Pacto de San José) 1969 Establece la obligación del Estado de proteger la familia como núcleo fundamental.
+
+Estas normas tienen jerarquía constitucional (Art. 1° CPEUM), por lo que cualquier política pública derivada del divorcio debe garantizar su cumplimiento.
+
+# 2.5 Marco institucional 
+
+El tratamiento del divorcio y sus efectos involucra a múltiples actores del Estado:
+
+Institución Función principal Fuentes de datos Poder Judicial (federal y estatal) Resolución de juicios de divorcio, custodia, patria potestad y alimentos. Sentencias y resoluciones judiciales. INEGI Registro y difusión estadística de divorcios, matrimonios y hogares. Microdatos y series históricas. DIF Nacional y Estatales Evaluación psicosocial y acompañamiento familiar. Expedientes clínicos y programas de protección. SIPINNA Coordinación de políticas de infancia y adolescencia. Informes anuales y diagnósticos estatales. Secretaría de Salud Atención a salud mental post-divorcio, prevención de violencia intrafamiliar. Sistema Nacional de Vigilancia Epidemiológica (SINAVE).
+
+Esta pluralidad de instituciones exige interoperabilidad de datos y protocolos éticos compartidos para la planeación de políticas familiares basadas en evidencia.
+
+# 2.6 Heterogeneidad normativa entre entidades federativas 
+
+Cada estado posee diferencias en:
+
+Definición de divorcio administrativo.
+
+Requisitos de acuerdo de custodia.
+
+Procedimientos de ejecución de pensión.
+
+Esta heterogeneidad explica las variaciones regionales observadas en los datos del INEGI. Ejemplo: entidades como Nuevo León y Ciudad de México incorporan custodia compartida explícita desde 2017–2019, mientras que otras la mantienen bajo interpretación judicial.
+
+En el análisis estadístico (Cap. 4–6), estas diferencias se controlan mediante variables dummy por entidad:
+
+r Copiar código modelo \<- glm(custodia_madre \~ edad_mujer + tipo_divorcio + entidad, data = df, family = binomial)
+
+# 2.7 El principio del interés superior del menor 
+
+Este principio, recogido en el artículo 4° constitucional y en la Ley General de los Derechos de Niñas, Niños y Adolescentes (LGDNNA, 2014), obliga a que toda decisión judicial o administrativa se oriente al bienestar integral del menor.
+
+Dimensiones clave:
+
+Supervivencia y desarrollo (salud, educación, protección).
+
+Participación y voz del niño en los procedimientos judiciales.
+
+Prioridad en asignación de recursos públicos.
+
+La medición de su cumplimiento puede vincularse con indicadores de:
+
+Custodia compartida vs. unilateral.
+
+Presencia de pensión alimenticia.
+
+Reportes de violencia intrafamiliar.
+
+Estos se integran en el modelo como variables proxy del grado de protección efectiva.
+
+# 2.8 Perspectiva de salud pública y justicia social
+
+El divorcio, al impactar en la salud mental, la estabilidad económica y la convivencia familiar, debe entenderse como evento de relevancia sanitaria. Las instituciones públicas pueden usar los datos legales como indicadores indirectos de riesgo psicosocial, integrando la información con registros de salud.
+
+Dimensión Indicador jurídico asociado Uso en política pública Salud mental familiar Tipo de custodia y tiempo de resolución del juicio Prevención secundaria (DIF, salud mental comunitaria) Seguridad económica Existencia de pensión alimenticia Evaluación de riesgo de pobreza infantil post-divorcio Violencia y conflicto Registros judiciales por violencia intrafamiliar Estrategias de mediación y atención temprana
+
+“La justicia familiar no se mide solo en sentencias, sino en datos que reflejen la vida y el bienestar de quienes las viven.”
+
+```{r}
+1 + 1
+```

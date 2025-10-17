@@ -1,0 +1,144 @@
+# Capítulo 3. Metodología y fuentes de datos
+
+# 3.1 Enfoque general de la investigación
+
+Este estudio se fundamenta en el principio de que las decisiones públicas deben basarse en **evidencia empírica verificable**.\
+El análisis del divorcio en México se aborda desde una perspectiva **interdisciplinaria**, que combina elementos de la salud pública, la sociología y el derecho familiar, utilizando herramientas estadísticas reproducibles y modelos computacionales en **R y RStudio**.
+
+El objetivo metodológico central es **convertir los datos abiertos en información útil para la toma de decisiones** en políticas públicas, especialmente aquellas orientadas a la **protección de la infancia, la equidad de género y el bienestar familiar**.
+
+------------------------------------------------------------------------
+
+# 3.2 Fuentes de datos
+
+Los datos empleados provienen de **fuentes públicas y verificables**, principalmente:
+
+| Fuente | Descripción | Periodo | Tipo de dato |
+|-----------------|------------------|-----------------|--------------------|
+| **INEGI – Estadísticas de divorcios** | Registros administrativos de divorcios por entidad y municipio, con variables de tipo de divorcio, hijos menores, custodia y pensión alimenticia. | 2017–2024 | Datos abiertos (CSV, API) |
+| **Censos y Encuestas Nacionales (INEGI, CONAPO)** | Datos demográficos y socioeconómicos de hogares, nivel educativo, ocupación y estructura familiar. | 2010–2020 | Series temporales |
+| **Consejos de la Judicatura Estatales** | Datos judiciales sobre resoluciones de custodia y patria potestad (cuando disponibles). | Variable por entidad | Registros administrativos |
+| **Secretaría de Salud / SIPINNA** | Indicadores de salud mental y programas de atención a familias en crisis. | 2015–2024 | Indicadores agregados |
+
+Los enlaces directos a las bases de INEGI se incluirán en el apéndice técnico (por ejemplo: [*https://www.inegi.org.mx/programas/nup/2022/*](https://www.inegi.org.mx/programas/nup/2022/)).
+
+------------------------------------------------------------------------
+
+# 3.3 Herramientas de análisis y entorno computacional
+
+El procesamiento y análisis se realizaron con el lenguaje **R (v4.5+)** dentro del entorno de desarrollo **RStudio (Positron IDE)**, en un flujo de trabajo reproducible.\
+Se emplearon librerías del ecosistema **tidyverse** para la manipulación de datos, y **Quarto** para la documentación y visualización de resultados.
+
+### Principales librerías utilizadas
+
+| Categoría               | Paquetes principales                         |
+|-------------------------|----------------------------------------------|
+| Manipulación y limpieza | `dplyr`, `tidyr`, `data.table`, `janitor`    |
+| Visualización           | `ggplot2`, `plotly`, `mxmaps`, `tmap`        |
+| Análisis estadístico    | `stats`, `car`, `psych`, `Hmisc`             |
+| Machine Learning        | `caret`, `randomForest`, `xgboost`, `glmnet` |
+| Reporte y documentación | `knitr`, `quarto`, `rmarkdown`, `gt`         |
+
+El código y los scripts se mantienen en un **repositorio GitHub**, permitiendo trazabilidad de cambios y publicación automática del libro en formato web mediante **GitHub Pages**.
+
+------------------------------------------------------------------------
+
+# 3.4 Procesamiento de datos
+
+El flujo de análisis se estructuró en cinco etapas:
+
+1.  **Obtención de datos**\
+    Descarga directa desde los portales del INEGI o mediante sus APIs REST.\
+    \`\`\`r divorcios \<- read.csv("[https://www.inegi.org.mx/contenidos/divorcios.csv")](https://www.inegi.org.mx/contenidos/divorcios.csv%22)) Limpieza y normalización
+
+Estandarización de nombres de variables.
+
+Conversión de fechas (as.Date).
+
+Codificación de categorías (case_when, factor).
+
+Imputación de valores faltantes (na_replace, median).
+
+Integración de fuentes Unión de bases de datos judiciales y demográficas por entidad (left_join, merge).
+
+Creación de indicadores Ejemplo:
+
+r Copiar código df \<- df %\>% mutate(tasa_divorcio = (divorcios / matrimonios) \* 100, custodia_madre_pct = (custodia_madre / total_casos) \* 100) Verificación y control de calidad
+
+Validación cruzada entre series.
+
+Identificación de outliers con boxplot.stats().
+
+Revisión de coherencia temporal y geográfica.
+
+# 3.5 Metodología descriptiva 
+
+La primera fase del análisis se centra en explorar y visualizar tendencias nacionales y estatales del divorcio, respondiendo preguntas como:
+
+¿Cómo ha evolucionado la tasa de divorcios por cada 100 matrimonios en México?
+
+¿Qué estados presentan mayores proporciones de custodia compartida o pensión alimenticia?
+
+¿Existen diferencias significativas por sexo, edad o nivel educativo de los cónyuges?
+
+Se aplicaron técnicas de:
+
+Estadística descriptiva: medidas de tendencia central, dispersión y proporciones.
+
+Visualización de datos: mapas coropléticos, diagramas de barras apiladas, líneas temporales.
+
+Análisis geográfico: uso de shapefiles municipales y estatales (mxmaps, sf).
+
+Ejemplo:
+
+r Copiar código df %\>% group_by(anio, entidad) %\>% summarise(tasa_div = mean(tasa_divorcio, na.rm = TRUE)) %\>% ggplot(aes(x = anio, y = tasa_div, color = entidad)) + geom_line() + theme_minimal() + labs(title = "Evolución de la tasa de divorcios por entidad")
+
+#  3.6 Metodología inferencial
+
+En la segunda fase, se exploraron relaciones estadísticas entre variables para identificar factores asociados a la custodia, la pensión y la duración del matrimonio.
+
+Pruebas paramétricas y no paramétricas:
+
+t.test(), chisq.test(), anova(), kruskal.test()
+
+Correlaciones:
+
+Pearson y Spearman (cor.test())
+
+Modelos de regresión:
+
+Regresión logística para predecir custodia materna/paterna.
+
+Modelos lineales generalizados para cuantificar efectos de edad y educación.
+
+Ejemplo:
+
+Estos resultados permiten inferir patrones y desigualdades estructurales en las decisiones judiciales y sociales relacionadas con el divorcio.
+
+# 3.7 Metodologías predictivas y machine learning 
+
+En una tercera etapa se aplicaron técnicas de aprendizaje automático supervisado para evaluar la capacidad predictiva de los datos administrativos.
+
+Modelos implementados Algoritmo Finalidad Paquete Árboles de decisión Clasificación de tipo de custodia rpart Random Forest Predicción de incumplimiento en pensión randomForest XGBoost Modelos comparativos de desempeño xgboost K-Means Agrupación de entidades según perfil familiar stats Regresión Lasso Selección automática de variables relevantes glmnet
+
+El rendimiento de los modelos se evaluó mediante métricas como:
+
+Exactitud (Accuracy)
+
+Área bajo la curva ROC (AUC)
+
+Validación cruzada k-fold
+
+Ejemplo de entrenamiento:
+
+r Copiar código set.seed(123) modelo_rf \<- randomForest(custodia \~ edad_mujer + edad_hombre + hijos_menores + tipo_divorcio + estado, data = df, ntree = 500) print(modelo_rf)
+
+# 3.8 Consideraciones éticas y reproducibilidad 
+
+Todo el análisis respeta los principios de transparencia, anonimización y ética del dato. No se utilizaron datos personales identificables, y las fuentes son de acceso público conforme a la Ley General de Transparencia y Acceso a la Información Pública (2015).
+
+Los resultados, gráficos y modelos pueden reproducirse completamente mediante los scripts incluidos en el repositorio del libro:
+
+<https://github.com/TuUsuario/divorcio-mexico-en-datos>
+
+3.9 Síntesis metodológica

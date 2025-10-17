@@ -1,0 +1,75 @@
+# Capítulo 4. Tendencias nacionales del divorcio
+
+# 4.1 Cobertura y alcance de las series
+
+Este capítulo presenta las **tendencias temporales y espaciales** del divorcio en México, con énfasis en:
+
+-   **Evolución nacional** (2017–2024).
+-   **Heterogeneidad entre entidades federativas**.
+-   Indicadores clave: **número de divorcios**, **tasa por 100 matrimonios**, **tasa por 100 mil habitantes** (opcional si integras población), y distribución de **custodia** y **pensión alimenticia**.
+
+> **Fuentes:** INEGI (series de divorcios y matrimonios), series poblacionales (CONAPO/INEGI).\
+> **Nota:** Sustituye las rutas de `data/` por tus archivos. Los enlaces a INEGI se listarán en Apéndices.
+
+------------------------------------------------------------------------
+
+# 4.2 Preparación de datos
+
+```{r}
+library(data.table)   # fread, rbindlist, joins rápidos
+library(arrow)        # Parquet/Feather (rápido y comprimido)
+library(stringi)      # string ops rápidas
+library(lubridate)    # si ya lo usas; verás que casi no lo requerimos
+library(forcats)      # helpers de factores
+library(timetk)       # ya en tu stack
+library(dplyr)
+library(ggplot2)
+library(stringi)
+library(uuid)
+library(viridis)
+library(googlesheets4)
+
+# Hilos y opciones
+setDTthreads(percent = 90)
+options(datatable.print.nrows = 50)
+
+# =========================
+# LECTURA RÁPIDA
+# Dejamos que fread infiera tipos y luego normalizamos.
+# =========================
+files <- list(
+  "conjunto_de_datos_divorcios_2017.csv",
+  "conjunto_de_datos_divocios_2018.csv", # (el archivo 2018 tiene un tipo en su nombre)
+  "conjunto_de_datos_divorcios_2019.csv",
+  "conjunto_de_datos_divorcios_2020.csv",
+  "conjunto_de_datos_divorcios_2021.csv",
+  "conjunto_de_datos_divorcios_2022.csv",
+  "conjunto_de_datos_ed2023.csv",
+  "conjunto_de_datos_ed2024.csv"
+  
+)
+
+read_one <- function(path) {
+  dt <- fread(path, encoding = "UTF-8", na.strings = c("", "NA", "N/A"))
+  setnames(dt, tolower(names(dt)))
+  dt
+}
+
+dlist <- lapply(files, read_one)
+div <- rbindlist(dlist, use.names = TRUE, fill = TRUE)
+rm(dlist); gc()
+
+
+div <- div %>%
+  mutate(id = UUIDgenerate())%>%
+  mutate(No = 1)
+
+dim(dv)
+
+head(div)
+
+```
+
+```{r}
+head(dv)
+```

@@ -1,0 +1,65 @@
+# Introduccion: El divorcio es un fenomeno de salud publica y decision informada
+
+# 1.1 El divorcio como indicador de salud social
+
+El divorcio no es solo un acto jurídico que disuelve un matrimonio: es un **indicador sensible del bienestar social**, íntimamente ligado a la salud mental, la economía doméstica, la equidad de género y la estabilidad de la infancia.\
+En México, su análisis desde los datos no solo revela transformaciones culturales, sino también **desigualdades estructurales** en el acceso a la justicia, el cuidado infantil y la protección económica.
+
+La separación conyugal, cuando no se gestiona adecuadamente, puede generar **efectos adversos en la salud física y emocional** de los involucrados, especialmente de niñas, niños y adolescentes. Por ello, este libro propone observar el divorcio como un **evento con consecuencias sanitarias y sociales**, que demanda estrategias de prevención, acompañamiento y evaluación desde el sistema público.
+
+# 1.2 El vacío entre la evidencia y la decisión pública
+
+A pesar de la abundancia de registros administrativos —actas de divorcio, juicios familiares, censos y encuestas—, México carece de una **infraestructura integrada de datos familiares** que permita diseñar políticas basadas en evidencia.
+
+\
+Las decisiones sobre custodia, pensión alimenticia o convivencia se toman, en muchos casos, sin respaldo estadístico ni análisis de impacto longitudinal.
+
+El divorcio, al igual que otras transiciones familiares, **afecta la salud mental, el acceso a servicios, la movilidad económica y la educación**. No obstante, la información sobre estos efectos se encuentra dispersa entre instituciones, sin interoperabilidad ni criterios unificados.
+
+Este libro busca **cerrar esa brecha entre evidencia y decisión**, ofreciendo un análisis técnico y visualmente accesible que vincula los datos judiciales, sanitarios y sociodemográficos en torno al divorcio en México.
+
+# 1.3 Objetivos del libro
+
+El propósito de esta obra es aportar herramientas concretas para la **toma de decisiones informadas en políticas públicas**, mediante un análisis reproducible y transparente.\
+Se persiguen tres objetivos centrales:
+
+1.  **Analizar los datos nacionales y estatales** sobre divorcio, custodia y pensión desde una perspectiva de salud pública.\
+2.  **Identificar patrones y desigualdades** que afectan la protección de la infancia y el bienestar familiar.\
+3.  **Proponer líneas de política pública y gestión interinstitucional** sustentadas en evidencia empírica.
+
+# 1.4 Perspectiva metodológica y de datos
+
+El libro adopta un **enfoque de datos abiertos y reproducibilidad científica**.\
+Las bases analizadas provienen de fuentes como:
+
+-   **INEGI**: estadísticas vitales y registros administrativos.\
+-   **Consejos de la Judicatura estatales**: sentencias y resoluciones de divorcio.\
+-   **Secretaría de Salud y CONAPO**: indicadores de salud mental y demografía.\
+-   **Programas estatales de protección a la infancia y familia (DIF, SIPINNA).**
+
+El análisis combina métodos cuantitativos (series de tiempo, georreferenciación, modelado predictivo) con un componente cualitativo orientado a la **interpretación de los efectos del divorcio en la salud familiar y social**.
+
+# 1.5 Estructura de la obra
+
+El contenido se organiza en torno a los ejes de evidencia, análisis y decisión pública:
+
+1.  **Marco jurídico y conceptual:** evolución legal del divorcio y su traducción en política pública.\
+2.  **Fuentes y metodología:** integración de bases judiciales, demográficas y sanitarias.\
+3.  **Tendencias nacionales:** análisis temporal y espacial del divorcio en México.\
+4.  **Custodia y protección infantil:** datos sobre guarda, convivencia y efectos en salud mental.\
+5.  **Pensión alimenticia y bienestar económico:** distribución, cumplimiento y desigualdades.\
+6.  **Impactos en salud pública:** depresión, violencia intrafamiliar, y riesgo psicosocial post-divorcio.\
+7.  **Política pública basada en datos:** propuestas para fortalecer la evidencia institucional.\
+8.  **Conclusiones y recomendaciones:** estrategias para articular justicia, salud y bienestar familiar.
+
+# 1.6 Hacia un modelo de política pública basada en evidencia
+
+El divorcio es un espejo de las relaciones sociales, pero también un campo donde convergen **justicia, salud y gobernanza de datos**.\
+México cuenta hoy con las condiciones técnicas y legales para transitar hacia una **política pública familiar basada en datos**, que permita diseñar intervenciones preventivas, priorizar recursos y evaluar resultados con rigor científico.
+
+Este libro no pretende dictar verdades jurídicas, sino **ofrecer evidencia verificable** para que tomadores de decisiones, legisladores, investigadores y organismos de salud puedan **construir políticas más humanas, eficientes y centradas en la infancia**.
+
+------------------------------------------------------------------------
+
+> *“Donde hay datos, hay justicia posible; donde no los hay, solo hay suposiciones.”*\
+> — Adaptación de Florence Nightingale, pionera de la estadística sanitaria.

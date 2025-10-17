@@ -1,0 +1,122 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "El divorcio en Mexico en datos",
+    "section": "",
+    "text": "Divorcios en Mexico\nA proposito de las\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Divorcios en Mexico"
+    ]
+  },
+  {
+    "objectID": "01-intro.html",
+    "href": "01-intro.html",
+    "title": "1  Introduccion: El divorcio es un fenomeno de salud publica y decision informada",
+    "section": "",
+    "text": "2 1.1 El divorcio como indicador de salud social\nEl divorcio no es solo un acto jurídico que disuelve un matrimonio: es un indicador sensible del bienestar social, íntimamente ligado a la salud mental, la economía doméstica, la equidad de género y la estabilidad de la infancia.\nEn México, su análisis desde los datos no solo revela transformaciones culturales, sino también desigualdades estructurales en el acceso a la justicia, el cuidado infantil y la protección económica.\nLa separación conyugal, cuando no se gestiona adecuadamente, puede generar efectos adversos en la salud física y emocional de los involucrados, especialmente de niñas, niños y adolescentes. Por ello, este libro propone observar el divorcio como un evento con consecuencias sanitarias y sociales, que demanda estrategias de prevención, acompañamiento y evaluación desde el sistema público.\n\n\n3 1.2 El vacío entre la evidencia y la decisión pública\nA pesar de la abundancia de registros administrativos —actas de divorcio, juicios familiares, censos y encuestas—, México carece de una infraestructura integrada de datos familiares que permita diseñar políticas basadas en evidencia.\n\nLas decisiones sobre custodia, pensión alimenticia o convivencia se toman, en muchos casos, sin respaldo estadístico ni análisis de impacto longitudinal.\nEl divorcio, al igual que otras transiciones familiares, afecta la salud mental, el acceso a servicios, la movilidad económica y la educación. No obstante, la información sobre estos efectos se encuentra dispersa entre instituciones, sin interoperabilidad ni criterios unificados.\nEste libro busca cerrar esa brecha entre evidencia y decisión, ofreciendo un análisis técnico y visualmente accesible que vincula los datos judiciales, sanitarios y sociodemográficos en torno al divorcio en México.\n\n\n4 1.3 Objetivos del libro\nEl propósito de esta obra es aportar herramientas concretas para la toma de decisiones informadas en políticas públicas, mediante un análisis reproducible y transparente.\nSe persiguen tres objetivos centrales:\n\nAnalizar los datos nacionales y estatales sobre divorcio, custodia y pensión desde una perspectiva de salud pública.\n\nIdentificar patrones y desigualdades que afectan la protección de la infancia y el bienestar familiar.\n\nProponer líneas de política pública y gestión interinstitucional sustentadas en evidencia empírica.\n\n\n\n5 1.4 Perspectiva metodológica y de datos\nEl libro adopta un enfoque de datos abiertos y reproducibilidad científica.\nLas bases analizadas provienen de fuentes como:\n\nINEGI: estadísticas vitales y registros administrativos.\n\nConsejos de la Judicatura estatales: sentencias y resoluciones de divorcio.\n\nSecretaría de Salud y CONAPO: indicadores de salud mental y demografía.\n\nProgramas estatales de protección a la infancia y familia (DIF, SIPINNA).\n\nEl análisis combina métodos cuantitativos (series de tiempo, georreferenciación, modelado predictivo) con un componente cualitativo orientado a la interpretación de los efectos del divorcio en la salud familiar y social.\n\n\n6 1.5 Estructura de la obra\nEl contenido se organiza en torno a los ejes de evidencia, análisis y decisión pública:\n\nMarco jurídico y conceptual: evolución legal del divorcio y su traducción en política pública.\n\nFuentes y metodología: integración de bases judiciales, demográficas y sanitarias.\n\nTendencias nacionales: análisis temporal y espacial del divorcio en México.\n\nCustodia y protección infantil: datos sobre guarda, convivencia y efectos en salud mental.\n\nPensión alimenticia y bienestar económico: distribución, cumplimiento y desigualdades.\n\nImpactos en salud pública: depresión, violencia intrafamiliar, y riesgo psicosocial post-divorcio.\n\nPolítica pública basada en datos: propuestas para fortalecer la evidencia institucional.\n\nConclusiones y recomendaciones: estrategias para articular justicia, salud y bienestar familiar.\n\n\n\n7 1.6 Hacia un modelo de política pública basada en evidencia\nEl divorcio es un espejo de las relaciones sociales, pero también un campo donde convergen justicia, salud y gobernanza de datos.\nMéxico cuenta hoy con las condiciones técnicas y legales para transitar hacia una política pública familiar basada en datos, que permita diseñar intervenciones preventivas, priorizar recursos y evaluar resultados con rigor científico.\nEste libro no pretende dictar verdades jurídicas, sino ofrecer evidencia verificable para que tomadores de decisiones, legisladores, investigadores y organismos de salud puedan construir políticas más humanas, eficientes y centradas en la infancia.\n\n\n“Donde hay datos, hay justicia posible; donde no los hay, solo hay suposiciones.”\n— Adaptación de Florence Nightingale, pionera de la estadística sanitaria.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduccion: El divorcio es un fenomeno de salud publica y decision informada</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-juridico.html",
+    "href": "02-marco-juridico.html",
+    "title": "2  Capítulo 2. Marco jurídico del divorcio en México",
+    "section": "",
+    "text": "3 2.2 Fundamentos constitucionales\n2.1 Contexto normativo general\nEl divorcio en México se rige por un entramado jurídico que combina principios constitucionales, legislación civil, y tratados internacionales sobre derechos humanos y protección a la infancia.\nEste marco define las reglas para la disolución del vínculo matrimonial, la tutela de los derechos de los hijos y las obligaciones económicas derivadas de la separación.\nA partir de la reforma de 2008, que introdujo el divorcio incausado, el Estado mexicano adoptó un modelo que reconoce la autonomía de las personas para terminar un matrimonio sin necesidad de acreditar culpa o causa específica.\nSin embargo, esta simplificación procesal generó nuevos retos: garantizar la protección efectiva del interés superior del menor y asegurar la continuidad en las obligaciones alimentarias y de cuidado.\nLa Constitución Política de los Estados Unidos Mexicanos establece los principios rectores que orientan la materia familiar:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Capítulo 2. Marco jurídico del divorcio en México</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-juridico.html#tipos-de-divorcio",
+    "href": "02-marco-juridico.html#tipos-de-divorcio",
+    "title": "2  Capítulo 2. Marco jurídico del divorcio en México",
+    "section": "4.1 2.3.1 Tipos de divorcio",
+    "text": "4.1 2.3.1 Tipos de divorcio\nEl artículo 266 del CCF y sus equivalentes estatales reconocen: - Divorcio voluntario o administrativo, cuando ambos cónyuges están de acuerdo y no hay hijos menores.\n- Divorcio incausado o unilateral, cuando basta la voluntad de una de las partes.\n- Divorcio judicial o necesario, basado en causas específicas (abandono, violencia, adulterio, etc.).\nEsta diversidad de modalidades se refleja en los registros administrativos del INEGI, lo que permite construir variables como:\n```r tipo_divorcio &lt;- c(“Administrativo”, “Judicial”, “Incausado”, “Voluntario”)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Capítulo 2. Marco jurídico del divorcio en México</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-juridico.html#custodia-y-patria-potestad",
+    "href": "02-marco-juridico.html#custodia-y-patria-potestad",
+    "title": "2  Capítulo 2. Marco jurídico del divorcio en México",
+    "section": "4.2 2.3.2 Custodia y patria potestad",
+    "text": "4.2 2.3.2 Custodia y patria potestad\nEl CCF, artículos 416–423, establece que la patria potestad corresponde a ambos padres y sólo puede limitarse por resolución judicial fundada en el interés superior del menor. Los códigos locales regulan la custodia física y los regímenes de convivencia, aspectos que en los datos del INEGI aparecen como variables categóricas:\ncustodia_madre\ncustodia_padre\ncustodia_compartida\nEstas categorías permiten analizar la aplicación práctica del principio de igualdad parental frente a los datos empíricos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Capítulo 2. Marco jurídico del divorcio en México</span>"
+    ]
+  },
+  {
+    "objectID": "02-marco-juridico.html#pensión-alimenticia",
+    "href": "02-marco-juridico.html#pensión-alimenticia",
+    "title": "2  Capítulo 2. Marco jurídico del divorcio en México",
+    "section": "4.3 2.3.3 Pensión alimenticia",
+    "text": "4.3 2.3.3 Pensión alimenticia\nEl derecho a recibir alimentos está protegido por el artículo 301 del CCF, que lo considera irrenunciable y proporcional a la capacidad económica del deudor. El incumplimiento se sanciona civil y penalmente, conforme al Código Penal Federal, artículo 337.\nEn términos de datos:\npension_si indica cumplimiento judicial o acuerdo.\npension_no o no_registro evidencia vacíos o incumplimientos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Capítulo 2. Marco jurídico del divorcio en México</span>"
+    ]
+  },
+  {
+    "objectID": "03-metodologia.html",
+    "href": "03-metodologia.html",
+    "title": "3  Capítulo 3. Metodología y fuentes de datos",
+    "section": "",
+    "text": "4 3.1 Enfoque general de la investigación\nEste estudio se fundamenta en el principio de que las decisiones públicas deben basarse en evidencia empírica verificable.\nEl análisis del divorcio en México se aborda desde una perspectiva interdisciplinaria, que combina elementos de la salud pública, la sociología y el derecho familiar, utilizando herramientas estadísticas reproducibles y modelos computacionales en R y RStudio.\nEl objetivo metodológico central es convertir los datos abiertos en información útil para la toma de decisiones en políticas públicas, especialmente aquellas orientadas a la protección de la infancia, la equidad de género y el bienestar familiar.\n\n\n\n5 3.2 Fuentes de datos\nLos datos empleados provienen de fuentes públicas y verificables, principalmente:\n\n\n\n\n\n\n\n\n\nFuente\nDescripción\nPeriodo\nTipo de dato\n\n\n\n\nINEGI – Estadísticas de divorcios\nRegistros administrativos de divorcios por entidad y municipio, con variables de tipo de divorcio, hijos menores, custodia y pensión alimenticia.\n2017–2024\nDatos abiertos (CSV, API)\n\n\nCensos y Encuestas Nacionales (INEGI, CONAPO)\nDatos demográficos y socioeconómicos de hogares, nivel educativo, ocupación y estructura familiar.\n2010–2020\nSeries temporales\n\n\nConsejos de la Judicatura Estatales\nDatos judiciales sobre resoluciones de custodia y patria potestad (cuando disponibles).\nVariable por entidad\nRegistros administrativos\n\n\nSecretaría de Salud / SIPINNA\nIndicadores de salud mental y programas de atención a familias en crisis.\n2015–2024\nIndicadores agregados\n\n\n\nLos enlaces directos a las bases de INEGI se incluirán en el apéndice técnico (por ejemplo: https://www.inegi.org.mx/programas/nup/2022/).\n\n\n\n6 3.3 Herramientas de análisis y entorno computacional\nEl procesamiento y análisis se realizaron con el lenguaje R (v4.5+) dentro del entorno de desarrollo RStudio (Positron IDE), en un flujo de trabajo reproducible.\nSe emplearon librerías del ecosistema tidyverse para la manipulación de datos, y Quarto para la documentación y visualización de resultados.\n\n6.0.1 Principales librerías utilizadas\n\n\n\n\n\n\n\nCategoría\nPaquetes principales\n\n\n\n\nManipulación y limpieza\ndplyr, tidyr, data.table, janitor\n\n\nVisualización\nggplot2, plotly, mxmaps, tmap\n\n\nAnálisis estadístico\nstats, car, psych, Hmisc\n\n\nMachine Learning\ncaret, randomForest, xgboost, glmnet\n\n\nReporte y documentación\nknitr, quarto, rmarkdown, gt\n\n\n\nEl código y los scripts se mantienen en un repositorio GitHub, permitiendo trazabilidad de cambios y publicación automática del libro en formato web mediante GitHub Pages.\n\n\n\n\n7 3.4 Procesamiento de datos\nEl flujo de análisis se estructuró en cinco etapas:\n\nObtención de datos\nDescarga directa desde los portales del INEGI o mediante sus APIs REST.\n```r divorcios &lt;- read.csv(“https://www.inegi.org.mx/contenidos/divorcios.csv”)) Limpieza y normalización\n\nEstandarización de nombres de variables.\nConversión de fechas (as.Date).\nCodificación de categorías (case_when, factor).\nImputación de valores faltantes (na_replace, median).\nIntegración de fuentes Unión de bases de datos judiciales y demográficas por entidad (left_join, merge).\nCreación de indicadores Ejemplo:\nr Copiar código df &lt;- df %&gt;% mutate(tasa_divorcio = (divorcios / matrimonios) * 100, custodia_madre_pct = (custodia_madre / total_casos) * 100) Verificación y control de calidad\nValidación cruzada entre series.\nIdentificación de outliers con boxplot.stats().\nRevisión de coherencia temporal y geográfica.\n\n\n8 3.5 Metodología descriptiva\nLa primera fase del análisis se centra en explorar y visualizar tendencias nacionales y estatales del divorcio, respondiendo preguntas como:\n¿Cómo ha evolucionado la tasa de divorcios por cada 100 matrimonios en México?\n¿Qué estados presentan mayores proporciones de custodia compartida o pensión alimenticia?\n¿Existen diferencias significativas por sexo, edad o nivel educativo de los cónyuges?\nSe aplicaron técnicas de:\nEstadística descriptiva: medidas de tendencia central, dispersión y proporciones.\nVisualización de datos: mapas coropléticos, diagramas de barras apiladas, líneas temporales.\nAnálisis geográfico: uso de shapefiles municipales y estatales (mxmaps, sf).\nEjemplo:\nr Copiar código df %&gt;% group_by(anio, entidad) %&gt;% summarise(tasa_div = mean(tasa_divorcio, na.rm = TRUE)) %&gt;% ggplot(aes(x = anio, y = tasa_div, color = entidad)) + geom_line() + theme_minimal() + labs(title = “Evolución de la tasa de divorcios por entidad”)\n\n\n9 3.6 Metodología inferencial\nEn la segunda fase, se exploraron relaciones estadísticas entre variables para identificar factores asociados a la custodia, la pensión y la duración del matrimonio.\nPruebas paramétricas y no paramétricas:\nt.test(), chisq.test(), anova(), kruskal.test()\nCorrelaciones:\nPearson y Spearman (cor.test())\nModelos de regresión:\nRegresión logística para predecir custodia materna/paterna.\nModelos lineales generalizados para cuantificar efectos de edad y educación.\nEjemplo:\nEstos resultados permiten inferir patrones y desigualdades estructurales en las decisiones judiciales y sociales relacionadas con el divorcio.\n\n\n10 3.7 Metodologías predictivas y machine learning\nEn una tercera etapa se aplicaron técnicas de aprendizaje automático supervisado para evaluar la capacidad predictiva de los datos administrativos.\nModelos implementados Algoritmo Finalidad Paquete Árboles de decisión Clasificación de tipo de custodia rpart Random Forest Predicción de incumplimiento en pensión randomForest XGBoost Modelos comparativos de desempeño xgboost K-Means Agrupación de entidades según perfil familiar stats Regresión Lasso Selección automática de variables relevantes glmnet\nEl rendimiento de los modelos se evaluó mediante métricas como:\nExactitud (Accuracy)\nÁrea bajo la curva ROC (AUC)\nValidación cruzada k-fold\nEjemplo de entrenamiento:\nr Copiar código set.seed(123) modelo_rf &lt;- randomForest(custodia ~ edad_mujer + edad_hombre + hijos_menores + tipo_divorcio + estado, data = df, ntree = 500) print(modelo_rf)\n\n\n11 3.8 Consideraciones éticas y reproducibilidad\nTodo el análisis respeta los principios de transparencia, anonimización y ética del dato. No se utilizaron datos personales identificables, y las fuentes son de acceso público conforme a la Ley General de Transparencia y Acceso a la Información Pública (2015).\nLos resultados, gráficos y modelos pueden reproducirse completamente mediante los scripts incluidos en el repositorio del libro:\nhttps://github.com/TuUsuario/divorcio-mexico-en-datos\n3.9 Síntesis metodológica",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Capítulo 3. Metodología y fuentes de datos</span>"
+    ]
+  },
+  {
+    "objectID": "04-tendencias-nacionales.html",
+    "href": "04-tendencias-nacionales.html",
+    "title": "4  Capítulo 4. Tendencias nacionales del divorcio",
+    "section": "",
+    "text": "5 4.1 Cobertura y alcance de las series\nEste capítulo presenta las tendencias temporales y espaciales del divorcio en México, con énfasis en:\n\nEvolución nacional (2017–2024).\nHeterogeneidad entre entidades federativas.\nIndicadores clave: número de divorcios, tasa por 100 matrimonios, tasa por 100 mil habitantes (opcional si integras población), y distribución de custodia y pensión alimenticia.\n\n\nFuentes: INEGI (series de divorcios y matrimonios), series poblacionales (CONAPO/INEGI).\nNota: Sustituye las rutas de data/ por tus archivos. Los enlaces a INEGI se listarán en Apéndices.\n\n\n\n\n6 4.2 Preparación de datos\n\nlibrary(data.table)   # fread, rbindlist, joins rápidos\nlibrary(arrow)        # Parquet/Feather (rápido y comprimido)\n\n\nAdjuntando el paquete: 'arrow'\n\n\nThe following object is masked from 'package:utils':\n\n    timestamp\n\nlibrary(stringi)      # string ops rápidas\nlibrary(lubridate)    # si ya lo usas; verás que casi no lo requerimos\n\n\nAdjuntando el paquete: 'lubridate'\n\n\nThe following object is masked from 'package:arrow':\n\n    duration\n\n\nThe following objects are masked from 'package:data.table':\n\n    hour, isoweek, mday, minute, month, quarter, second, wday, week,\n    yday, year\n\n\nThe following objects are masked from 'package:base':\n\n    date, intersect, setdiff, union\n\nlibrary(forcats)      # helpers de factores\nlibrary(timetk)       # ya en tu stack\n\n\nAdjuntando el paquete: 'timetk'\n\n\nThe following object is masked from 'package:data.table':\n\n    :=\n\nlibrary(dplyr)\n\n\nAdjuntando el paquete: 'dplyr'\n\n\nThe following objects are masked from 'package:data.table':\n\n    between, first, last\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(ggplot2)\nlibrary(stringi)\nlibrary(uuid)\nlibrary(viridis)\n\nCargando paquete requerido: viridisLite\n\nlibrary(arrow)\n\ndiv &lt;- read_parquet(\"Divorciosmx20172024.parquet\")\n\nCargaremos los datos\n\ndim(div)\n\n[1] 1198943      65",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Capítulo 4. Tendencias nacionales del divorcio</span>"
+    ]
+  },
+  {
+    "objectID": "05-patria-potestad.html",
+    "href": "05-patria-potestad.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "06-pension-alimenticia.html",
+    "href": "06-pension-alimenticia.html",
+    "title": "6  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "08-politicas-publicas.html",
+    "href": "08-politicas-publicas.html",
+    "title": "7  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "09-conclusiones.html",
+    "href": "09-conclusiones.html",
+    "title": "8  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  }
+]

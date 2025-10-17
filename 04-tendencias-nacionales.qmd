@@ -27,49 +27,15 @@ library(ggplot2)
 library(stringi)
 library(uuid)
 library(viridis)
-library(googlesheets4)
+library(arrow)
 
-# Hilos y opciones
-setDTthreads(percent = 90)
-options(datatable.print.nrows = 50)
+div <- read_parquet("Divorciosmx20172024.parquet")
 
-# =========================
-# LECTURA RÁPIDA
-# Dejamos que fread infiera tipos y luego normalizamos.
-# =========================
-files <- list(
-  "conjunto_de_datos_divorcios_2017.csv",
-  "conjunto_de_datos_divocios_2018.csv", # (el archivo 2018 tiene un tipo en su nombre)
-  "conjunto_de_datos_divorcios_2019.csv",
-  "conjunto_de_datos_divorcios_2020.csv",
-  "conjunto_de_datos_divorcios_2021.csv",
-  "conjunto_de_datos_divorcios_2022.csv",
-  "conjunto_de_datos_ed2023.csv",
-  "conjunto_de_datos_ed2024.csv"
-  
-)
-
-read_one <- function(path) {
-  dt <- fread(path, encoding = "UTF-8", na.strings = c("", "NA", "N/A"))
-  setnames(dt, tolower(names(dt)))
-  dt
-}
-
-dlist <- lapply(files, read_one)
-div <- rbindlist(dlist, use.names = TRUE, fill = TRUE)
-rm(dlist); gc()
-
-
-div <- div %>%
-  mutate(id = UUIDgenerate())%>%
-  mutate(No = 1)
-
-dim(dv)
-
-head(div)
 
 ```
 
+Cargaremos los datos
+
 ```{r}
-head(dv)
+dim(div)
 ```

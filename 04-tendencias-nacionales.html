@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -181,7 +216,20 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#cobertura-y-alcance-de-las-series" id="toc-cobertura-y-alcance-de-las-series" class="nav-link active" data-scroll-target="#cobertura-y-alcance-de-las-series"><span class="header-section-number">5</span> 4.1 Cobertura y alcance de las series</a></li>
-  <li><a href="#preparación-de-datos" id="toc-preparación-de-datos" class="nav-link" data-scroll-target="#preparación-de-datos"><span class="header-section-number">6</span> 4.2 Preparación de datos</a></li>
+  <li><a href="#datos-nacionales" id="toc-datos-nacionales" class="nav-link" data-scroll-target="#datos-nacionales"><span class="header-section-number">6</span> 4.2 Datos nacionales</a>
+  <ul class="collapse">
+  <li><a href="#datos-nacionales-anuales" id="toc-datos-nacionales-anuales" class="nav-link" data-scroll-target="#datos-nacionales-anuales"><span class="header-section-number">6.1</span> 4.2.1 Datos nacionales anuales</a></li>
+  <li><a href="#datos-nacionales-mensuales-y-diarios" id="toc-datos-nacionales-mensuales-y-diarios" class="nav-link" data-scroll-target="#datos-nacionales-mensuales-y-diarios"><span class="header-section-number">6.2</span> 4.2.2 Datos nacionales mensuales y diarios</a></li>
+  <li><a href="#proyeccion-a-futuro" id="toc-proyeccion-a-futuro" class="nav-link" data-scroll-target="#proyeccion-a-futuro"><span class="header-section-number">6.3</span> 4.2.3 Proyeccion a futuro</a>
+  <ul class="collapse">
+  <li><a href="#estacionalidad-con-covid-incorporado" id="toc-estacionalidad-con-covid-incorporado" class="nav-link" data-scroll-target="#estacionalidad-con-covid-incorporado"><span class="header-section-number">6.3.1</span> 2) <strong>Estacionalidad</strong> con COVID incorporado</a></li>
+  <li><a href="#predicción-sin-el-efecto-covid-modelo-b" id="toc-predicción-sin-el-efecto-covid-modelo-b" class="nav-link" data-scroll-target="#predicción-sin-el-efecto-covid-modelo-b"><span class="header-section-number">6.3.2</span> 3) Predicción <strong>sin el efecto COVID</strong> (Modelo B)</a></li>
+  <li><a href="#estacionalidad-sin-covid" id="toc-estacionalidad-sin-covid" class="nav-link" data-scroll-target="#estacionalidad-sin-covid"><span class="header-section-number">6.3.3</span> 4) <strong>Estacionalidad</strong> sin COVID</a></li>
+  <li><a href="#comparativa-de-modelos-a-vs-b" id="toc-comparativa-de-modelos-a-vs-b" class="nav-link" data-scroll-target="#comparativa-de-modelos-a-vs-b"><span class="header-section-number">6.3.4</span> 5) <strong>Comparativa de modelos</strong> (A vs B)</a></li>
+  </ul></li>
+  <li><a href="#recomendaciones-para-planeación-operativa" id="toc-recomendaciones-para-planeación-operativa" class="nav-link" data-scroll-target="#recomendaciones-para-planeación-operativa"><span class="header-section-number">6.4</span> <strong>4.2.4 Recomendaciones para planeación operativa</strong></a></li>
+  <li><a href="#advertencias-metodológicas" id="toc-advertencias-metodológicas" class="nav-link" data-scroll-target="#advertencias-metodológicas"><span class="header-section-number">6.5</span> <strong>4.2.5 Advertencias metodológicas</strong></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -221,9 +269,10 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <hr>
 </section>
-<section id="preparación-de-datos" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> 4.2 Preparación de datos</h1>
-<p>Para la lect</p>
+<section id="datos-nacionales" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 4.2 Datos nacionales</h1>
+<section id="datos-nacionales-anuales" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="datos-nacionales-anuales"><span class="header-section-number">6.1</span> 4.2.1 Datos nacionales anuales</h2>
 <p>En la base de datos del INEGI de registros de divorcios del 2017 al 2024 se encuentra un total de 1,198,943 registros.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -235,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>En la tabla existen registros desde <strong>1950</strong> y un total de <strong>67721</strong> registros con año <strong>9999 (No Espeficado)</strong>, por lo que los eliminaremos de la tabla para conservar los registros de <strong>2017 a 2024</strong>, quedando un total de <strong>1067040</strong> registros.</p>
-<p>Ahora repetiremos la graficacion de los registros filtrados</p>
+<p>Ahora repetiremos la graficacion de los registros filtrados:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -247,23 +296,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ieqehelkln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ieqehelkln table {
+<div id="ywtuvsmues" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ywtuvsmues table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ieqehelkln thead, #ieqehelkln tbody, #ieqehelkln tfoot, #ieqehelkln tr, #ieqehelkln td, #ieqehelkln th {
+#ywtuvsmues thead, #ywtuvsmues tbody, #ywtuvsmues tfoot, #ywtuvsmues tr, #ywtuvsmues td, #ywtuvsmues th {
   border-style: none;
 }
 
-#ieqehelkln p {
+#ywtuvsmues p {
   margin: 0;
   padding: 0;
 }
 
-#ieqehelkln .gt_table {
+#ywtuvsmues .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -289,12 +338,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_caption {
+#ywtuvsmues .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ieqehelkln .gt_title {
+#ywtuvsmues .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -306,7 +355,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#ieqehelkln .gt_subtitle {
+#ywtuvsmues .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -318,7 +367,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#ieqehelkln .gt_heading {
+#ywtuvsmues .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -330,13 +379,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_bottom_border {
+#ywtuvsmues .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_col_headings {
+#ywtuvsmues .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -351,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_col_heading {
+#ywtuvsmues .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -371,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ieqehelkln .gt_column_spanner_outer {
+#ywtuvsmues .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -383,15 +432,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#ieqehelkln .gt_column_spanner_outer:first-child {
+#ywtuvsmues .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ieqehelkln .gt_column_spanner_outer:last-child {
+#ywtuvsmues .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ieqehelkln .gt_column_spanner {
+#ywtuvsmues .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -403,11 +452,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#ieqehelkln .gt_spanner_row {
+#ywtuvsmues .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ieqehelkln .gt_group_heading {
+#ywtuvsmues .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -433,7 +482,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#ieqehelkln .gt_empty_group_heading {
+#ywtuvsmues .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -448,15 +497,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#ieqehelkln .gt_from_md > :first-child {
+#ywtuvsmues .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ieqehelkln .gt_from_md > :last-child {
+#ywtuvsmues .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ieqehelkln .gt_row {
+#ywtuvsmues .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -475,7 +524,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#ieqehelkln .gt_stub {
+#ywtuvsmues .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -488,7 +537,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ieqehelkln .gt_stub_row_group {
+#ywtuvsmues .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -502,15 +551,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#ieqehelkln .gt_row_group_first td {
+#ywtuvsmues .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ieqehelkln .gt_row_group_first th {
+#ywtuvsmues .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ieqehelkln .gt_summary_row {
+#ywtuvsmues .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -520,16 +569,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ieqehelkln .gt_first_summary_row {
+#ywtuvsmues .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_first_summary_row.thick {
+#ywtuvsmues .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ieqehelkln .gt_last_summary_row {
+#ywtuvsmues .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -539,7 +588,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_grand_summary_row {
+#ywtuvsmues .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -549,7 +598,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ieqehelkln .gt_first_grand_summary_row {
+#ywtuvsmues .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -559,7 +608,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_last_grand_summary_row_top {
+#ywtuvsmues .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -569,11 +618,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_striped {
+#ywtuvsmues .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ieqehelkln .gt_table_body {
+#ywtuvsmues .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -582,7 +631,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_footnotes {
+#ywtuvsmues .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -596,7 +645,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_footnote {
+#ywtuvsmues .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -605,7 +654,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ieqehelkln .gt_sourcenotes {
+#ywtuvsmues .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -619,7 +668,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#ieqehelkln .gt_sourcenote {
+#ywtuvsmues .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -627,72 +676,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#ieqehelkln .gt_left {
+#ywtuvsmues .gt_left {
   text-align: left;
 }
 
-#ieqehelkln .gt_center {
+#ywtuvsmues .gt_center {
   text-align: center;
 }
 
-#ieqehelkln .gt_right {
+#ywtuvsmues .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ieqehelkln .gt_font_normal {
+#ywtuvsmues .gt_font_normal {
   font-weight: normal;
 }
 
-#ieqehelkln .gt_font_bold {
+#ywtuvsmues .gt_font_bold {
   font-weight: bold;
 }
 
-#ieqehelkln .gt_font_italic {
+#ywtuvsmues .gt_font_italic {
   font-style: italic;
 }
 
-#ieqehelkln .gt_super {
+#ywtuvsmues .gt_super {
   font-size: 65%;
 }
 
-#ieqehelkln .gt_footnote_marks {
+#ywtuvsmues .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ieqehelkln .gt_asterisk {
+#ywtuvsmues .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ieqehelkln .gt_indent_1 {
+#ywtuvsmues .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ieqehelkln .gt_indent_2 {
+#ywtuvsmues .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ieqehelkln .gt_indent_3 {
+#ywtuvsmues .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ieqehelkln .gt_indent_4 {
+#ywtuvsmues .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ieqehelkln .gt_indent_5 {
+#ywtuvsmues .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ieqehelkln .katex-display {
+#ywtuvsmues .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ieqehelkln div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ywtuvsmues div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -766,8 +815,679 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="datos-nacionales-mensuales-y-diarios" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="datos-nacionales-mensuales-y-diarios"><span class="header-section-number">6.2</span> 4.2.2 Datos nacionales mensuales y diarios</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br>
+Para que sea más fácil detectar cómo va cambiando con el tiempo, se agregó una línea suavizada que promedia los últimos 7 días; esta línea nos permite ver la tendencia real sin distraernos con saltos aislados propios del registro día a día.</p>
+<p><br>
+</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(monthly_ts, <span class="fu">aes</span>(<span class="at">x =</span> mes, <span class="at">y =</span> total)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"#2c3e50"</span>) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.8</span>, <span class="at">color =</span> <span class="st">"#2c3e50"</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"6 months"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_labels =</span> <span class="st">"%Y-%m"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Divorcios por mes (INEGI 2017–2024)"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Mes"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total mensual"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cuando agrupamos la misma información por mes, la gráfica se vuelve más clara y ayuda a ver si existen momentos del año donde se concentran más divorcios, así como si el total mensual ha aumentado o disminuido con el paso de los años.</p>
+<blockquote class="blockquote">
+<p>Al observar la gráfica destacan varios patrones:</p>
+<p><strong>1) Un desplome abrupto en 2020</strong><br>
+Se aprecia una caída extrema del número de divorcios entre abril y junio de 2020, llegando prácticamente a cero. Este comportamiento coincide con el cierre temporal de juzgados y oficinas públicas durante las primeras etapas de la pandemia por COVID-19, cuando muchos trámites civiles quedaron suspendidos.</p>
+<p><strong>2) Recuperación posterior pero con variación</strong><br>
+Tras la reapertura gradual en 2021, los divorcios vuelven a aparecer, primero con valores moderados y luego retomando niveles comparables a los años previos, aunque con oscilaciones mes a mes.</p>
+<p><strong>3) Caídas cíclicas dentro de cada año</strong><br>
+Prácticamente en todos los años se observan caídas marcadas en ciertos meses. Es probable que estas correspondan a periodos de baja actividad administrativa —por ejemplo, vacaciones, fin de año o recesos judiciales— más que a un cambio real en la conflictiva familiar.</p>
+<p><strong>4) Tendencia reciente a la baja en 2024</strong><br>
+En los últimos meses visibles de la serie se nota un descenso sostenido, lo que podría deberse a retrasos en el registro, cambios institucionales o simplemente a que los datos más recientes aún no están completamente cerrados.</p>
+<p>La serie mensual no solo muestra cuántos divorcios ocurren, sino que revela cómo el fenómeno responde a factores externos —como la pandemia— y a ritmos institucionales del sistema judicial mexicano. Estas variaciones no reflejan solo dinámicas familiares, sino también el calendario y capacidad de las instituciones que registran y formalizan el divorcio.</p>
+</blockquote>
+</section>
+<section id="proyeccion-a-futuro" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="proyeccion-a-futuro"><span class="header-section-number">6.3</span> 4.2.3 Proyeccion a futuro</h2>
+<p>Además de describir el pasado, pronosticar permite <strong>anticipar carga de trabajo</strong> y <strong>planear recursos</strong> (juzgados, mediación, defensorías). Un buen pronóstico no “adivina”: <strong>extrapola patrones reales</strong> del historial (tendencia de largo plazo, estacionalidad del calendario y choques externos) para construir escenarios informados sobre los próximos meses.<br>
+</p>
+<p>En 2020, el cierre sanitario provocó un <strong>choque excepcional</strong> en los trámites. Por eso es clave distinguir entre lo que es <strong>dinámica propia del divorcio</strong> y lo que es <strong>efecto administrativo transitorio</strong>.</p>
+<ul>
+<li><p>Se agregaron los registros <strong>por mes</strong> (2017–2024).</p></li>
+<li><p>Se ajustaron <strong>dos modelos Prophet</strong>:</p></li>
+</ul>
+<pre><code>-    **Modelo A (sin dummy COVID):** usa la serie tal cual; el colapso de 2020 se interpreta como **cambio en la tendencia**.
+
+-   **Modelo B (con dummy COVID 2020-03 a 2020-12):** introduce un **regresor externo** que “marca” los meses del cierre; así el impacto se modela como **efecto aditivo** y **no** como quiebre estructural. Para el futuro, la dummy se fija en 0 (suponemos que no se repite el cierre).
+
+    ### 1) Predicción **con COVID como cambio de tendencia** (Modelo A)</code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En la primera proyección (línea de pronóstico base), el bache de 2020 aparece absorbido por la <strong>tendencia</strong>: el modelo “aprende” que la serie puede caer bruscamente y, por tanto, <strong>arrastra niveles más bajos</strong> hacia el futuro. Las bandas de incertidumbre reflejan la variabilidad histórica, pero la <strong>trayectoria central</strong> queda condicionada por ese suceso extremo.<br>
+Interpretativamente, este escenario sirve para <strong>cuantificar el impacto total</strong> si uno no separa el choque sanitario del comportamiento subyacente.</p>
+<section id="estacionalidad-con-covid-incorporado" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="estacionalidad-con-covid-incorporado"><span class="header-section-number">6.3.1</span> 2) <strong>Estacionalidad</strong> con COVID incorporado</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>El componente estacional anual del Modelo A muestra los <strong>picos y valles</strong> regulares del calendario: meses tradicionales de <strong>alta</strong> actividad (p.&nbsp;ej., alrededor de mitad de año y algunos periodos post-vacacionales) y meses <strong>bajos</strong> (vacaciones, fin de año, recesos judiciales).<br>
+</p>
+<p>Como el choque de 2020 no es estacional sino <strong>exógeno</strong>, la estacionalidad conserva su forma, pero la <strong>línea de base</strong> queda deprimida por el bache.</p>
+</section>
+<section id="predicción-sin-el-efecto-covid-modelo-b" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="predicción-sin-el-efecto-covid-modelo-b"><span class="header-section-number">6.3.2</span> 3) Predicción <strong>sin el efecto COVID</strong> (Modelo B)</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Para evitar ese arrastre, incorporamos una <strong>dummy COVID</strong> en 2020-03…2020-12. Con ello, el colapso se explica como <strong>regresor</strong> y <strong>no</strong> como cambio permanente en la estructura de la serie.<br>
+</p>
+<p>Al pronosticar con la dummy desactivada en el futuro, la proyección resultante <strong>recupera un nivel más coherente</strong> con los años previos al cierre, manteniendo la variación propia del fenómeno. Este escenario es útil para responder: <em>¿cómo se vería la trayectoria si el cierre sanitario no hubiera existido?</em></p>
+</section>
+<section id="estacionalidad-sin-covid" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="estacionalidad-sin-covid"><span class="header-section-number">6.3.3</span> 4) <strong>Estacionalidad</strong> sin COVID</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prophet_plot_components</span>(m_reg, forecast)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En los componentes del Modelo B (con dummy) la <strong>estacionalidad anual</strong> conserva la misma <strong>fase</strong> (meses altos/bajos), pero ahora se observa sobre una <strong>línea de base más estable</strong>. Es decir, el calendario administrativo sigue ordenando los picos y valles, pero el nivel general <strong>no</strong> queda contaminado por el cierre extraordinario de 2020.</p>
+</section>
+<section id="comparativa-de-modelos-a-vs-b" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="comparativa-de-modelos-a-vs-b"><span class="header-section-number">6.3.4</span> 5) <strong>Comparativa de modelos</strong> (A vs B)</h3>
+<p>La figura comparativa muestra dos lecturas complementarias:</p>
+<ul>
+<li><p>La <strong>línea discontinua</strong> (Modelo A, sin ajuste) proyecta una <strong>trayectoria más baja</strong>, porque incorpora el bache de 2020 como cambio de tendencia.</p></li>
+<li><p>La <strong>línea sólida</strong> (Modelo B, con dummy) ofrece un <strong>escenario más realista</strong> para planeación operativa: separa el choque sanitario y proyecta el <strong>comportamiento subyacente</strong> que ya se observaba antes del cierre.</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="regcamevtb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#regcamevtb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#regcamevtb thead, #regcamevtb tbody, #regcamevtb tfoot, #regcamevtb tr, #regcamevtb td, #regcamevtb th {
+  border-style: none;
+}
+
+#regcamevtb p {
+  margin: 0;
+  padding: 0;
+}
+
+#regcamevtb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#regcamevtb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#regcamevtb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#regcamevtb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#regcamevtb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#regcamevtb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#regcamevtb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#regcamevtb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#regcamevtb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#regcamevtb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#regcamevtb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#regcamevtb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#regcamevtb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#regcamevtb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#regcamevtb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#regcamevtb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#regcamevtb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#regcamevtb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#regcamevtb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#regcamevtb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#regcamevtb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#regcamevtb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#regcamevtb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#regcamevtb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#regcamevtb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#regcamevtb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#regcamevtb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#regcamevtb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#regcamevtb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#regcamevtb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#regcamevtb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#regcamevtb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#regcamevtb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#regcamevtb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#regcamevtb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#regcamevtb .gt_left {
+  text-align: left;
+}
+
+#regcamevtb .gt_center {
+  text-align: center;
+}
+
+#regcamevtb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#regcamevtb .gt_font_normal {
+  font-weight: normal;
+}
+
+#regcamevtb .gt_font_bold {
+  font-weight: bold;
+}
+
+#regcamevtb .gt_font_italic {
+  font-style: italic;
+}
+
+#regcamevtb .gt_super {
+  font-size: 65%;
+}
+
+#regcamevtb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#regcamevtb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#regcamevtb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#regcamevtb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#regcamevtb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#regcamevtb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#regcamevtb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#regcamevtb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#regcamevtb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Pronóstico 24 meses — comparación de modelos</strong></td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="horizonte_meses" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Meses</th>
+<th id="promedio_A" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Promedio mensual (A)</th>
+<th id="promedio_B" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Promedio mensual (B)</th>
+<th id="total_A" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total 24m (A)</th>
+<th id="total_B" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total 24m (B)</th>
+<th id="dif_pct_prom" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Δ% promedio (B vs A)</th>
+<th id="dif_pct_total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Δ% total (B vs A)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="horizonte_meses">24</td>
+<td class="gt_row gt_right" headers="promedio_A">4,757</td>
+<td class="gt_row gt_right" headers="promedio_B">3,814</td>
+<td class="gt_row gt_right" headers="total_A">114,176</td>
+<td class="gt_row gt_right" headers="total_B">91,541</td>
+<td class="gt_row gt_right" headers="dif_pct_prom">−19.8</td>
+<td class="gt_row gt_right" headers="dif_pct_total">−19.8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Conclusion</strong> El pronóstico mensual sin ajuste (Modelo A) proyecta en promedio <strong>4,757</strong> divorcios por mes para los próximos <strong>24</strong> meses.<br>
+Al incorporar el <strong>dummy COVID</strong> (Modelo B) —que aísla el shock administrativo de 2020— el promedio esperado asciende a <strong>3,814</strong>, lo que equivale a una variación de <strong>-19.8%</strong> respecto del modelo sin ajuste.</p>
+<p>En términos sustantivos, el Modelo B evita que el colapso de 2020 “arrastre” artificialmente la tendencia de largo plazo.<br>
+La <strong>estacionalidad anual</strong> se mantiene: meses históricamente altos continúan siendo los de mayor actividad, mientras que los valles coinciden con recesos administrativos.<br>
+Con esto, el escenario ajustado sugiere una trayectoria más coherente con los años previos al cierre, útil para planear capacidad operativa en juzgados y servicios de mediación.</p>
+</section>
+</section>
+<section id="recomendaciones-para-planeación-operativa" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="recomendaciones-para-planeación-operativa"><span class="header-section-number">6.4</span> <strong>4.2.4 Recomendaciones para planeación operativa</strong></h2>
+<ol type="1">
+<li><p><strong>Usar el modelo ajustado (con dummy COVID) para estimar demanda futura</strong><br>
+El escenario sin corrección sub-estima la carga esperada porque arrastra el cierre de 2020 como si fuera cambio estructural. Para planificación de salas, personal, peritos y turnos, el escenario ajustado es el que más se aproxima al régimen real post-COVID.</p></li>
+<li><p><strong>Planear con horizonte mínimo anual y no mensual aislado</strong><br>
+Debido a la estacionalidad judicial, los meses con valle no implican reducción permanente. Las dotaciones deben estimarse sobre el <strong>promedio anual proyectado</strong>, no sobre un mes puntual.</p></li>
+<li><p><strong>Reconocer estacionalidad y calendarizar refuerzos</strong><br>
+Los picos recurrentes detectados en la estacionalidad pueden usarse para:</p></li>
+</ol>
+<pre><code>-    Programación de horarios extendidos
+
+-    Refuerzos temporales en periodos críticos
+
+-    Prevención de cuellos de botella en notificaciones, audiencias y sentencias</code></pre>
+<ol start="4" type="1">
+<li><p><strong>Separar capacidad de “pico” y capacidad “sostenida”</strong><br>
+El promedio mensual no captura la carga de los meses altos. Se recomienda dimensionar infraestructura <strong>para el percentil alto</strong> del calendario, no para el promedio.</p></li>
+<li><p><strong>Re-entrenar el pronóstico cada 6–12 meses</strong><br>
+Si la política pública (digitalización, mediación obligatoria, reforma legal) cambia el régimen, el modelo debe actualizarse para no basar decisiones en estructura vieja.</p></li>
+</ol>
+</section>
+<section id="advertencias-metodológicas" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="advertencias-metodológicas"><span class="header-section-number">6.5</span> <strong>4.2.5 Advertencias metodológicas</strong></h2>
+<ol type="1">
+<li><p><strong>El modelo no explica causas</strong><br>
+La proyección describe patrones temporales; no identifica por qué aumentan o disminuyen los divorcios. No debe usarse para inferir causalidad.</p></li>
+<li><p><strong>El rango de la dummy COVID es una decisión de modelado</strong><br>
+Si el cierre real fue más largo o más corto que el marcado, el efecto puede estar sub- o sobre-estimado. El rango debe revisarse con evidencia de calendario judicial.</p></li>
+<li><p><strong>Modo aditivo vs multiplicativo</strong><br>
+Si los meses altos aumentan en proporción al nivel general, un modelo multiplicativo puede describir mejor la dinámica. Debe probarse y compararse.</p></li>
+<li><p><strong>Sensibilidad al tramo de entrenamiento</strong><br>
+Usar todo 2017–2024 vs usar sólo post-COVID (2021+) puede alterar la pendiente estimada. Es buena práctica reportar al menos <strong>dos ventanas de entrenamiento</strong> como control.</p></li>
+<li><p><strong>Datos recientes incompletos distorsionan el final de la serie</strong><br>
+Los últimos meses del año suelen estar sub-reportados al momento de descarga. Debe anotarse explícitamente cuando el último tramo es “cifra preliminar”.</p></li>
+<li><p><strong>La incertidumbre es parte de la respuesta</strong><br>
+Las bandas no son “error” del modelo, sino información: cuando la banda es ancha, la planeación debe incorporar <em>margen de tolerancia</em>, no sólo la línea central.</p></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

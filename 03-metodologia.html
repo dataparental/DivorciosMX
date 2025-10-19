@@ -228,9 +228,9 @@ El análisis del divorcio en México se aborda desde una perspectiva <strong>int
 <p>Los datos empleados provienen de <strong>fuentes públicas y verificables</strong>, principalmente:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 25%">
-<col style="width: 23%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
 <col style="width: 27%">
 </colgroup>
 <thead>
@@ -268,7 +268,7 @@ El análisis del divorcio en México se aborda desde una perspectiva <strong>int
 </tr>
 </tbody>
 </table>
-<p>Los enlaces directos a las bases de INEGI se incluirán en el apéndice técnico (por ejemplo: <a href="https://www.inegi.org.mx/programas/nup/2022/"><em>https://www.inegi.org.mx/programas/nup/2022/</em></a>).</p>
+<p>Los enlaces directos a las bases de INEGI se incluirán en el apéndice técnico</p>
 <hr>
 </section>
 <section id="herramientas-de-análisis-y-entorno-computacional" class="level1" data-number="6">
@@ -320,16 +320,18 @@ Se emplearon librerías del ecosistema <strong>tidyverse</strong> para la manipu
 <p>El flujo de análisis se estructuró en cinco etapas:</p>
 <ol type="1">
 <li><strong>Obtención de datos</strong><br>
-Descarga directa desde los portales del INEGI o mediante sus APIs REST.<br>
-```r divorcios &lt;- read.csv(“<a href="https://www.inegi.org.mx/contenidos/divorcios.csv%22">https://www.inegi.org.mx/contenidos/divorcios.csv”)</a>) Limpieza y normalización</li>
+Descarga directa desde los portales del INEGI<br>
+```r divorcios &lt;- read.csv(“<a href="https://www.inegi.org.mx/contenidos/divorcios.csv%22">https://www.inegi.org.mx/contenidos/divorcios.csv”)</a>)</li>
+<li>Limpieza y normalización</li>
+<li>Estandarización de nombres de variables.</li>
+<li>Conversión de fechas (as.Date).</li>
+<li>Codificación de categorías (case_when, factor).</li>
+<li>Imputación de valores faltantes (na_replace, median).</li>
+<li>Integración de fuentes Unión de bases de datos judiciales y demográficas por entidad (left_join, merge).</li>
 </ol>
-<p>Estandarización de nombres de variables.</p>
-<p>Conversión de fechas (as.Date).</p>
-<p>Codificación de categorías (case_when, factor).</p>
-<p>Imputación de valores faltantes (na_replace, median).</p>
-<p>Integración de fuentes Unión de bases de datos judiciales y demográficas por entidad (left_join, merge).</p>
 <p>Creación de indicadores Ejemplo:</p>
-<p>r Copiar código df &lt;- df %&gt;% mutate(tasa_divorcio = (divorcios / matrimonios) * 100, custodia_madre_pct = (custodia_madre / total_casos) * 100) Verificación y control de calidad</p>
+<p>r Copiar código df &lt;- df %&gt;% mutate(tasa_divorcio = (divorcios / matrimonios) * 100, custodia_madre_pct = (custodia_madre / total_casos) * 100)</p>
+<p>Verificación y control de calidad</p>
 <p>Validación cruzada entre series.</p>
 <p>Identificación de outliers con boxplot.stats().</p>
 <p>Revisión de coherencia temporal y geográfica.</p>

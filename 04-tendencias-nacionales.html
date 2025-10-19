@@ -258,87 +258,628 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="preparación-de-datos" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> 4.2 Preparación de datos</h1>
+<p>Para la lect</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)   <span class="co"># fread, rbindlist, joins rápidos</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)        <span class="co"># Parquet/Feather (rápido y comprimido)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'arrow'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:utils':
-
-    timestamp</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringi)      <span class="co"># string ops rápidas</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)    <span class="co"># si ya lo usas; verás que casi no lo requerimos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'lubridate'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:arrow':
-
-    duration</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:data.table':
-
-    hour, isoweek, mday, minute, month, quarter, second, wday, week,
-    yday, year</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)      <span class="co"># helpers de factores</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(timetk)       <span class="co"># ya en tu stack</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'timetk'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:data.table':
-
-    :=</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:data.table':
-
-    between, first, last</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringi)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(uuid)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Cargando paquete requerido: viridisLite</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>div <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">"Divorciosmx20172024.parquet"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Cargaremos los datos</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(div)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1198943      65</code></pre>
+<pre><code>En la base de datos del INEGI de registros de divorcios del 2017 al 2024 se encuentra un total de 1,198,943 registros.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Listado de variables en el dataframe</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(div)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classes 'data.table' and 'data.frame':  1198943 obs. of  66 variables:
+ $ tipo_div  : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ ent_regis : chr  "1" "1" "1" "1" ...
+ $ mun_regis : chr  "7" "7" "6" "1" ...
+ $ loc_regis : chr  "1" "1" "1" "1" ...
+ $ tloc_regis: int  8 8 8 15 8 15 15 15 15 15 ...
+ $ ent_mat   : chr  "9" "9" "1" "14" ...
+ $ mun_mat   : chr  "15" "15" "8" "35" ...
+ $ local_mat : chr  "1" "1" "1" "1" ...
+ $ tloc_mat  : int  15 15 4 8 15 15 4 15 15 7 ...
+ $ dia_mat   : int  99 99 99 9 17 26 27 13 17 1 ...
+ $ mes_mat   : int  99 99 99 12 8 1 9 2 11 12 ...
+ $ anio_mat  : int  9999 9999 9999 1954 1960 1961 1964 1965 1965 1965 ...
+ $ dia_reg   : int  26 2 11 31 20 11 15 26 12 9 ...
+ $ mes_reg   : int  1 9 11 10 9 6 11 8 10 2 ...
+ $ anio_reg  : int  2017 2016 2016 2017 2016 2013 2017 2016 2016 2017 ...
+ $ dia_sen   : int  7 9 17 1 17 12 27 3 28 5 ...
+ $ mes_sen   : int  6 6 7 11 5 1 11 2 3 4 ...
+ $ anio_sen  : int  2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 ...
+ $ dia_eje   : int  7 9 17 1 17 16 27 3 28 5 ...
+ $ mes_eje   : int  6 6 7 11 5 1 11 2 3 4 ...
+ $ anio_eje  : int  2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 ...
+ $ ini_juic  : int  3 1 1 3 1 1 3 1 1 1 ...
+ $ favor     : int  3 3 1 3 3 3 3 3 3 1 ...
+ $ causa     : int  28 28 28 28 28 28 28 28 28 28 ...
+ $ hijos     : int  3 4 0 8 1 3 7 7 7 4 ...
+ $ hij_men   : int  3 0 0 0 0 3 0 0 0 0 ...
+ $ custodia  : int  2 0 0 0 0 3 0 0 0 0 ...
+ $ cus_hij   : int  3 0 0 0 0 3 0 0 0 0 ...
+ $ pat_pot   : int  3 0 0 0 0 3 0 0 0 0 ...
+ $ pat_hij   : int  3 0 0 0 0 3 0 0 0 0 ...
+ $ pension   : int  12 4 99 4 4 1 4 4 99 99 ...
+ $ pen_hij   : int  3 0 0 0 0 3 0 0 99 99 ...
+ $ naci_div1 : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ edad_div1 : int  33 56 44 85 74 68 70 72 74 67 ...
+ $ nacim_div1: int  1984 1961 1973 1931 1943 9999 1947 1944 1942 1950 ...
+ $ eciv_adiv1: int  1 1 1 9 1 1 9 1 9 1 ...
+ $ ent_rhdiv1: chr  "1" "32" "1" "1" ...
+ $ mun_rhdiv1: chr  "7" "25" "8" "1" ...
+ $ loc_rhdiv1: chr  "30" "1" "1" "1" ...
+ $ tloc_div1 : int  4 5 4 15 8 15 15 15 15 15 ...
+ $ escol_div1: int  3 3 5 3 1 5 3 1 0 3 ...
+ $ con_acdiv1: int  2 1 1 1 1 1 2 2 2 2 ...
+ $ dedic_div1: int  2 1 1 1 1 1 4 4 4 2 ...
+ $ postr_div1: int  9 3 1 2 3 1 9 9 9 9 ...
+ $ sexo_div1 : int  2 1 2 1 1 1 1 1 1 2 ...
+ $ naci_div2 : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ edad_div2 : int  36 56 999 80 70 999 70 72 67 999 ...
+ $ nacim_div2: int  1981 1961 9999 1937 1947 9999 1946 1944 1949 9999 ...
+ $ eciv_adiv2: int  1 1 9 9 1 9 9 1 9 9 ...
+ $ ent_rhdiv2: chr  "1" "32" "1" "1" ...
+ $ mun_rhdiv2: chr  "7" "25" "6" "1" ...
+ $ loc_rhdiv2: chr  "30" "1" "9999" "1" ...
+ $ tloc_div2 : int  4 5 99 15 8 99 15 15 15 99 ...
+ $ escol_div2: int  3 3 9 3 3 9 3 0 9 9 ...
+ $ con_acdiv2: int  1 2 9 2 2 9 2 2 2 9 ...
+ $ dedic_div2: int  1 2 9 2 2 9 4 2 2 9 ...
+ $ postr_div2: int  1 9 9 9 9 9 9 9 9 9 ...
+ $ sexo_div2 : int  1 2 1 2 2 2 2 2 2 1 ...
+ $ dura_soc  : int  99 99 99 62 56 52 53 51 50 51 ...
+ $ dura_leg  : int  99 99 99 62 56 56 53 52 51 51 ...
+ $ edad_mdiv1: int  99 99 99 23 17 99 17 21 23 15 ...
+ $ edad_mdiv2: int  99 99 99 17 13 99 18 21 16 99 ...
+ $ t_dvante  : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ dis_reoax : int  998 998 998 998 998 998 998 998 998 998 ...
+ $ id        : chr  "0867944c-1699-4703-b081-6d857c573bbd" "0867944c-1699-4703-b081-6d857c573bbd" "0867944c-1699-4703-b081-6d857c573bbd" "0867944c-1699-4703-b081-6d857c573bbd" ...
+ $ No        : num  1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>En la tabla existen registros desde **1950** y un total de **67721** registros con año **9999 (No Espeficado)**, por lo que los eliminaremos de la tabla para conservar los registros de **2017 a 2024**, quedando un total de **1067040** registros.</code></pre>
+</div>
+</div>
+<p>Ahora repetiremos la graficacion de los registros filtrados</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-tendencias-nacionales_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="vniiktrptu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vniiktrptu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vniiktrptu thead, #vniiktrptu tbody, #vniiktrptu tfoot, #vniiktrptu tr, #vniiktrptu td, #vniiktrptu th {
+  border-style: none;
+}
+
+#vniiktrptu p {
+  margin: 0;
+  padding: 0;
+}
+
+#vniiktrptu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vniiktrptu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vniiktrptu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vniiktrptu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vniiktrptu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vniiktrptu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vniiktrptu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vniiktrptu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vniiktrptu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vniiktrptu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vniiktrptu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vniiktrptu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vniiktrptu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vniiktrptu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vniiktrptu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vniiktrptu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vniiktrptu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vniiktrptu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vniiktrptu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vniiktrptu .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vniiktrptu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vniiktrptu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vniiktrptu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vniiktrptu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vniiktrptu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vniiktrptu .gt_left {
+  text-align: left;
+}
+
+#vniiktrptu .gt_center {
+  text-align: center;
+}
+
+#vniiktrptu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vniiktrptu .gt_font_normal {
+  font-weight: normal;
+}
+
+#vniiktrptu .gt_font_bold {
+  font-weight: bold;
+}
+
+#vniiktrptu .gt_font_italic {
+  font-style: italic;
+}
+
+#vniiktrptu .gt_super {
+  font-size: 65%;
+}
+
+#vniiktrptu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vniiktrptu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vniiktrptu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vniiktrptu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vniiktrptu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vniiktrptu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vniiktrptu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#vniiktrptu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#vniiktrptu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border"><strong>Data Parental — Número de divorcios por año (INEGI 2017–2024)</strong></td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="anio_reg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Año</th>
+<th id="total_divorcios" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total de divorcios</th>
+<th id="pct_total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">% del total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="anio_reg">2017</td>
+<td class="gt_row gt_right" headers="total_divorcios">138,994</td>
+<td class="gt_row gt_right" headers="pct_total">13.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="anio_reg">2018</td>
+<td class="gt_row gt_right" headers="total_divorcios">147,039</td>
+<td class="gt_row gt_right" headers="pct_total">13.8%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="anio_reg">2019</td>
+<td class="gt_row gt_right" headers="total_divorcios">147,001</td>
+<td class="gt_row gt_right" headers="pct_total">13.8%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="anio_reg">2020</td>
+<td class="gt_row gt_right" headers="total_divorcios">105,491</td>
+<td class="gt_row gt_right" headers="pct_total">9.9%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="anio_reg">2021</td>
+<td class="gt_row gt_right" headers="total_divorcios">140,761</td>
+<td class="gt_row gt_right" headers="pct_total">13.2%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="anio_reg">2022</td>
+<td class="gt_row gt_right" headers="total_divorcios">146,118</td>
+<td class="gt_row gt_right" headers="pct_total">13.7%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="anio_reg">2023</td>
+<td class="gt_row gt_right" headers="total_divorcios">142,188</td>
+<td class="gt_row gt_right" headers="pct_total">13.3%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="anio_reg">2024</td>
+<td class="gt_row gt_right" headers="total_divorcios">99,448</td>
+<td class="gt_row gt_right" headers="pct_total">9.3%</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="3" class="gt_sourcenote"><strong>Total general:</strong> 1,067,040<br>
+<strong>Media anual:</strong> 133,380</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
 </div>
 </div>
 
